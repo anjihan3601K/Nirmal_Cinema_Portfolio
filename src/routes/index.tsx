@@ -274,7 +274,7 @@ function Hero() {
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-7 py-3 text-base font-medium text-foreground transition-all hover:bg-card hover:border-primary/30"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3 text-base font-medium text-foreground transition-all hover:bg-card/80 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
               >
                 <Mail className="h-4 w-4" />
                 Collaborate
@@ -285,8 +285,8 @@ function Hero() {
 
         <Reveal delay={2} className="mt-12 lg:mt-0">
           <div className="relative">
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-2xl" />
-            <div className="relative aspect-[3/4] w-72 overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-primary/10 sm:w-80 lg:w-96">
+            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/25 via-primary/10 to-transparent blur-3xl" />
+            <div className="relative aspect-[3/4] w-72 overflow-hidden rounded-2xl border-2 border-primary/20 bg-card shadow-2xl shadow-primary/20 sm:w-80 lg:w-96">
               <img
                 src={nirmalPortrait.url}
                 alt="Nirmal Sai Pothini"
@@ -294,7 +294,7 @@ function Hero() {
                 width={400}
                 height={533}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
             </div>
           </div>
         </Reveal>
@@ -534,7 +534,7 @@ function Contact() {
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-8 py-4 text-base font-medium text-foreground transition-all hover:bg-card/80 hover:border-primary/30"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-8 py-4 text-base font-medium text-foreground transition-all hover:bg-card/80 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
             >
               <User className="h-5 w-5" />
               View Resume
