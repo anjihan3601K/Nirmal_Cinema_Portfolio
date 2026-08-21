@@ -77,19 +77,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Nirmal Sai Pothini | Actor · Director · Story Writer" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Nirmal Sai Pothini — actor, director, and story writer crafting emotionally charged cinema. Featuring the short film Late Night and original narratives.",
+      },
+      { name: "author", content: "Nirmal Sai Pothini" },
+      {
+        property: "og:title",
+        content: "Nirmal Sai Pothini | Actor · Director · Story Writer",
+      },
+      {
+        property: "og:description",
+        content:
+          "Portfolio of Nirmal Sai Pothini — actor, director, and story writer crafting emotionally charged cinema.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@nirmalsaipothini" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fira+Sans:wght@300;400;500;600&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
