@@ -583,6 +583,8 @@ function Footer() {
 function Index() {
   return (
     <main className="min-h-screen bg-background">
+      <CinematicLoader />
+      <ScrollProgress />
       <Navigation />
       <Hero />
       <About />
