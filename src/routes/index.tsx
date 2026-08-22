@@ -11,7 +11,7 @@ import {
   Sparkles,
   Star,
   Theater,
-  User,
+  
 } from "lucide-react";
 
 import heroPortrait from "../assets/hero-portrait.jpg";
@@ -19,7 +19,7 @@ import lateNightImg from "../assets/project-late-night.jpg";
 import fatherSonImg from "../assets/project-father-son.jpg";
 import loveStoryImg from "../assets/project-love-story.jpg";
 import studentLifeImg from "../assets/project-student-life.jpg";
-import nirmalPortrait from "../assets/nirmal-portrait.png.asset.json";
+import nirmalAvatar from "../assets/nirmal-avatar.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,6 +48,8 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const LATE_NIGHT_URL = "https://www.youtube.com/watch?v=Rg-5pQS_0Ks";
+
 const projects = [
   {
     id: "late-night",
@@ -59,6 +61,7 @@ const projects = [
     image: lateNightImg,
     accent: "from-primary/20 to-transparent",
     featured: true,
+    link: LATE_NIGHT_URL,
   },
   {
     id: "father-son",
@@ -70,6 +73,7 @@ const projects = [
     image: fatherSonImg,
     accent: "from-accent/20 to-transparent",
     featured: false,
+    link: null,
   },
   {
     id: "love-story",
@@ -81,6 +85,7 @@ const projects = [
     image: loveStoryImg,
     accent: "from-primary/20 to-transparent",
     featured: false,
+    link: null,
   },
   {
     id: "student-life",
@@ -92,6 +97,7 @@ const projects = [
     image: studentLifeImg,
     accent: "from-accent/20 to-transparent",
     featured: false,
+    link: null,
   },
 ];
 
@@ -144,32 +150,119 @@ function useReveal() {
 function Reveal({
   children,
   delay = 0,
+  variant = "up",
   className = "",
 }: {
   children: React.ReactNode;
   delay?: number;
+  variant?: "up" | "left" | "right" | "zoom";
   className?: string;
 }) {
   const { ref, visible } = useReveal();
-  const delayClass =
-    delay === 1
-      ? "reveal-delay-1"
-      : delay === 2
-        ? "reveal-delay-2"
-        : delay === 3
-          ? "reveal-delay-3"
-          : delay === 4
-            ? "reveal-delay-4"
-            : "";
+  const delayClass = delay > 0 ? `reveal-delay-${Math.min(delay, 5)}` : "";
+  const variantClass =
+    variant === "left"
+      ? "reveal-left"
+      : variant === "right"
+        ? "reveal-right"
+        : variant === "zoom"
+          ? "reveal-zoom"
+          : "";
 
   return (
     <div
       ref={ref}
-      className={`reveal ${delayClass} ${visible ? "visible" : ""} ${className}`}
+      className={`reveal ${variantClass} ${delayClass} ${visible ? "visible" : ""} ${className}`}
     >
       {children}
     </div>
   );
+}
+
+function CinematicLoader() {
+  const [done, setDone] = useState(false);
+  const [exiting, setExiting] = useState(false);
+
+  useEffect(() => {
+    const t1 = setTimeout(() => setExiting(true), 1900);
+    const t2 = setTimeout(() => setDone(true), 2900);
+    document.body.style.overflow = "hidden";
+    const t3 = setTimeout(() => {
+      document.body.style.overflow = "";
+    }, 1900);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  if (done) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100]" aria-hidden="true">
+      <div
+        className={`absolute inset-x-0 top-0 h-1/2 bg-background ${exiting ? "curtain-top" : ""}`}
+      />
+      <div
+        className={`absolute inset-x-0 bottom-0 h-1/2 bg-background ${exiting ? "curtain-bottom" : ""}`}
+      />
+      <div
+        className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 ${
+          exiting ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <div className="film-grain absolute inset-0" />
+        <div className="spotlight-bg absolute inset-0" />
+        <Film className="reel-spin h-10 w-10 text-primary" />
+        <p className="title-in mt-6 font-serif text-2xl text-foreground sm:text-4xl">
+          NIRMAL SAI POTHINI
+        </p>
+        <p className="flicker mt-3 text-xs uppercase tracking-[0.4em] text-muted-foreground">
+          Actor · Director · Writer
+        </p>
+        <div className="mt-8 h-px w-48 overflow-hidden bg-border">
+          <div className="loader-bar h-full w-full bg-primary" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ScrollProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? (window.scrollY / max) * 100 : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div className="fixed top-0 left-0 z-[60] h-0.5 w-full bg-transparent">
+      <div
+        className="h-full bg-primary transition-[width] duration-150 ease-out"
+        style={{ width: `${progress}%` }}
+      />
+    </div>
+  );
+}
+
+function useParallax(factor = 0.15) {
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.scrollY * factor);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [factor]);
+
+  return offset;
 }
 
 function Navigation() {
@@ -234,12 +327,23 @@ function Navigation() {
 }
 
 function Hero() {
+  const offset = useParallax(0.25);
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-background">
-      <div className="spotlight-bg absolute inset-0" />
+      <div
+        className="spotlight-bg ambient-drift absolute inset-0"
+        style={{ transform: `translate3d(0, ${offset * 0.4}px, 0)` }}
+      />
       <div className="film-grain absolute inset-0" />
 
-      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 py-32 lg:flex-row lg:justify-between lg:gap-12">
+      <div
+        className="relative mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 py-32 lg:flex-row lg:justify-between lg:gap-12"
+        style={{
+          transform: `translate3d(0, ${offset * -0.3}px, 0)`,
+          opacity: Math.max(0, 1 - offset / 420),
+        }}
+      >
         <div className="flex max-w-2xl flex-col items-center text-center lg:items-start lg:text-left">
           <Reveal>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur-sm">
@@ -283,18 +387,22 @@ function Hero() {
           </Reveal>
         </div>
 
-        <Reveal delay={2} className="mt-12 lg:mt-0">
-          <div className="relative">
-            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/25 via-primary/10 to-transparent blur-3xl" />
-            <div className="relative aspect-[3/4] w-72 overflow-hidden rounded-2xl border-2 border-primary/20 bg-card shadow-2xl shadow-primary/20 sm:w-80 lg:w-96">
+        <Reveal delay={2} variant="zoom" className="mt-12 lg:mt-0">
+          <div
+            className="relative"
+            style={{ transform: `translate3d(0, ${offset * 0.18}px, 0)` }}
+          >
+            <div className="ambient-drift absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/25 via-primary/10 to-transparent blur-3xl" />
+            <div className="group relative aspect-[3/4] w-72 overflow-hidden rounded-2xl border-2 border-primary/20 bg-card shadow-2xl shadow-primary/20 sm:w-80 lg:w-96">
               <img
-                src={nirmalPortrait.url}
-                alt="Nirmal Sai Pothini"
-                className="h-full w-full object-cover object-top"
-                width={400}
-                height={533}
+                src={nirmalAvatar.url}
+                alt="Illustrated cinematic avatar of Nirmal Sai Pothini"
+                className="h-full w-full object-cover object-top transition-transform duration-[1200ms] group-hover:scale-105"
+                width={450}
+                height={600}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
+              <div className="film-grain absolute inset-0" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
             </div>
           </div>
         </Reveal>
@@ -451,6 +559,17 @@ function Work() {
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                     {project.description}
                   </p>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
+                    >
+                      <Play className="h-3.5 w-3.5 fill-current" />
+                      Watch on YouTube
+                    </a>
+                  )}
                 </div>
               </article>
             </Reveal>
@@ -526,30 +645,38 @@ function Contact() {
         <Reveal delay={3}>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="mailto:hello@nirmalsaipothini.com"
+              href="mailto:nirmalsaipothini@gmail.com"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25"
             >
               <Mail className="h-5 w-5" />
-              hello@nirmalsaipothini.com
+              nirmalsaipothini@gmail.com
             </a>
             <a
-              href="#"
+              href={LATE_NIGHT_URL}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-8 py-4 text-base font-medium text-foreground transition-all hover:bg-card/80 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
             >
-              <User className="h-5 w-5" />
-              View Resume
+              <Play className="h-5 w-5 fill-current" />
+              Watch Late Night
             </a>
           </div>
         </Reveal>
         <Reveal delay={4}>
           <div className="mt-10 flex justify-center gap-6 text-muted-foreground">
-            {["Instagram", "IMDb", "YouTube"].map((social) => (
+            {[
+              { label: "Instagram", href: "#" },
+              { label: "IMDb", href: "#" },
+              { label: "YouTube", href: LATE_NIGHT_URL },
+            ].map((social) => (
               <a
-                key={social}
-                href="#"
+                key={social.label}
+                href={social.href}
+                target={social.href === "#" ? undefined : "_blank"}
+                rel="noreferrer"
                 className="story-link text-sm font-medium transition-colors hover:text-foreground"
               >
-                {social}
+                {social.label}
               </a>
             ))}
           </div>
@@ -583,6 +710,8 @@ function Footer() {
 function Index() {
   return (
     <main className="min-h-screen bg-background">
+      <CinematicLoader />
+      <ScrollProgress />
       <Navigation />
       <Hero />
       <About />

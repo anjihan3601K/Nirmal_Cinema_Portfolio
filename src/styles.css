@@ -247,4 +247,158 @@
     break-inside: avoid;
     margin-bottom: 1.5rem;
   }
+
+  /* Extra cinematic reveal variants */
+  .reveal-left {
+    transform: translateX(-40px);
+  }
+
+  .reveal-right {
+    transform: translateX(40px);
+  }
+
+  .reveal-zoom {
+    transform: scale(0.92);
+    filter: blur(6px);
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-left.visible,
+  .reveal-right.visible {
+    transform: translateX(0);
+  }
+
+  .reveal-zoom.visible {
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  .reveal-delay-5 {
+    transition-delay: 0.5s;
+  }
+
+  /* Cinematic preloader */
+  @keyframes curtain-up {
+    to {
+      transform: translateY(-100%);
+    }
+  }
+
+  @keyframes curtain-down {
+    to {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes projector-flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    12% {
+      opacity: 0.55;
+    }
+    24% {
+      opacity: 0.95;
+    }
+    38% {
+      opacity: 0.4;
+    }
+    52% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes reel-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes loader-bar {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes title-in {
+    from {
+      opacity: 0;
+      letter-spacing: 0.6em;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      letter-spacing: 0.18em;
+      filter: blur(0);
+    }
+  }
+
+  .curtain-top {
+    animation: curtain-up 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+
+  .curtain-bottom {
+    animation: curtain-down 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+
+  .flicker {
+    animation: projector-flicker 2.2s ease-in-out infinite;
+  }
+
+  .reel-spin {
+    animation: reel-spin 3s linear infinite;
+  }
+
+  .loader-bar {
+    transform-origin: left;
+    animation: loader-bar 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .title-in {
+    animation: title-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Slow ambient drift for hero glow */
+  @keyframes ambient-drift {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate3d(0, -18px, 0) scale(1.06);
+      opacity: 1;
+    }
+  }
+
+  .ambient-drift {
+    animation: ambient-drift 9s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-zoom {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
+
+    .flicker,
+    .reel-spin,
+    .ambient-drift {
+      animation: none !important;
+    }
+  }
 }
+
