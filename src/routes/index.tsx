@@ -150,32 +150,119 @@ function useReveal() {
 function Reveal({
   children,
   delay = 0,
+  variant = "up",
   className = "",
 }: {
   children: React.ReactNode;
   delay?: number;
+  variant?: "up" | "left" | "right" | "zoom";
   className?: string;
 }) {
   const { ref, visible } = useReveal();
-  const delayClass =
-    delay === 1
-      ? "reveal-delay-1"
-      : delay === 2
-        ? "reveal-delay-2"
-        : delay === 3
-          ? "reveal-delay-3"
-          : delay === 4
-            ? "reveal-delay-4"
-            : "";
+  const delayClass = delay > 0 ? `reveal-delay-${Math.min(delay, 5)}` : "";
+  const variantClass =
+    variant === "left"
+      ? "reveal-left"
+      : variant === "right"
+        ? "reveal-right"
+        : variant === "zoom"
+          ? "reveal-zoom"
+          : "";
 
   return (
     <div
       ref={ref}
-      className={`reveal ${delayClass} ${visible ? "visible" : ""} ${className}`}
+      className={`reveal ${variantClass} ${delayClass} ${visible ? "visible" : ""} ${className}`}
     >
       {children}
     </div>
   );
+}
+
+function CinematicLoader() {
+  const [done, setDone] = useState(false);
+  const [exiting, setExiting] = useState(false);
+
+  useEffect(() => {
+    const t1 = setTimeout(() => setExiting(true), 1900);
+    const t2 = setTimeout(() => setDone(true), 2900);
+    document.body.style.overflow = "hidden";
+    const t3 = setTimeout(() => {
+      document.body.style.overflow = "";
+    }, 1900);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  if (done) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100]" aria-hidden="true">
+      <div
+        className={`absolute inset-x-0 top-0 h-1/2 bg-background ${exiting ? "curtain-top" : ""}`}
+      />
+      <div
+        className={`absolute inset-x-0 bottom-0 h-1/2 bg-background ${exiting ? "curtain-bottom" : ""}`}
+      />
+      <div
+        className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 ${
+          exiting ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <div className="film-grain absolute inset-0" />
+        <div className="spotlight-bg absolute inset-0" />
+        <Film className="reel-spin h-10 w-10 text-primary" />
+        <p className="title-in mt-6 font-serif text-2xl text-foreground sm:text-4xl">
+          NIRMAL SAI POTHINI
+        </p>
+        <p className="flicker mt-3 text-xs uppercase tracking-[0.4em] text-muted-foreground">
+          Actor · Director · Writer
+        </p>
+        <div className="mt-8 h-px w-48 overflow-hidden bg-border">
+          <div className="loader-bar h-full w-full bg-primary" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ScrollProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? (window.scrollY / max) * 100 : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div className="fixed top-0 left-0 z-[60] h-0.5 w-full bg-transparent">
+      <div
+        className="h-full bg-primary transition-[width] duration-150 ease-out"
+        style={{ width: `${progress}%` }}
+      />
+    </div>
+  );
+}
+
+function useParallax(factor = 0.15) {
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.scrollY * factor);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [factor]);
+
+  return offset;
 }
 
 function Navigation() {
