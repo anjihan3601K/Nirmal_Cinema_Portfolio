@@ -73,6 +73,7 @@ const projects = [
     image: fatherSonImg,
     accent: "from-accent/20 to-transparent",
     featured: false,
+    link: null,
   },
   {
     id: "love-story",
@@ -84,6 +85,7 @@ const projects = [
     image: loveStoryImg,
     accent: "from-primary/20 to-transparent",
     featured: false,
+    link: null,
   },
   {
     id: "student-life",
@@ -95,6 +97,7 @@ const projects = [
     image: studentLifeImg,
     accent: "from-accent/20 to-transparent",
     featured: false,
+    link: null,
   },
 ];
 
