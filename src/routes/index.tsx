@@ -48,6 +48,8 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const LATE_NIGHT_URL = "https://www.youtube.com/watch?v=Rg-5pQS_0Ks";
+
 const projects = [
   {
     id: "late-night",
@@ -59,6 +61,7 @@ const projects = [
     image: lateNightImg,
     accent: "from-primary/20 to-transparent",
     featured: true,
+    link: LATE_NIGHT_URL,
   },
   {
     id: "father-son",
