@@ -327,12 +327,23 @@ function Navigation() {
 }
 
 function Hero() {
+  const offset = useParallax(0.25);
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-background">
-      <div className="spotlight-bg absolute inset-0" />
+      <div
+        className="spotlight-bg ambient-drift absolute inset-0"
+        style={{ transform: `translate3d(0, ${offset * 0.4}px, 0)` }}
+      />
       <div className="film-grain absolute inset-0" />
 
-      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 py-32 lg:flex-row lg:justify-between lg:gap-12">
+      <div
+        className="relative mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 py-32 lg:flex-row lg:justify-between lg:gap-12"
+        style={{
+          transform: `translate3d(0, ${offset * -0.3}px, 0)`,
+          opacity: Math.max(0, 1 - offset / 420),
+        }}
+      >
         <div className="flex max-w-2xl flex-col items-center text-center lg:items-start lg:text-left">
           <Reveal>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur-sm">
