@@ -545,13 +545,19 @@ function Contact() {
         </Reveal>
         <Reveal delay={4}>
           <div className="mt-10 flex justify-center gap-6 text-muted-foreground">
-            {["Instagram", "IMDb", "YouTube"].map((social) => (
+            {[
+              { label: "Instagram", href: "#" },
+              { label: "IMDb", href: "#" },
+              { label: "YouTube", href: LATE_NIGHT_URL },
+            ].map((social) => (
               <a
-                key={social}
-                href="#"
+                key={social.label}
+                href={social.href}
+                target={social.href === "#" ? undefined : "_blank"}
+                rel="noreferrer"
                 className="story-link text-sm font-medium transition-colors hover:text-foreground"
               >
-                {social}
+                {social.label}
               </a>
             ))}
           </div>
