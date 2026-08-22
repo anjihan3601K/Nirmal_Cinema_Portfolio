@@ -526,18 +526,20 @@ function Contact() {
         <Reveal delay={3}>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="mailto:hello@nirmalsaipothini.com"
+              href="mailto:nirmalsaipothini@gmail.com"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25"
             >
               <Mail className="h-5 w-5" />
-              hello@nirmalsaipothini.com
+              nirmalsaipothini@gmail.com
             </a>
             <a
-              href="#"
+              href={LATE_NIGHT_URL}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-8 py-4 text-base font-medium text-foreground transition-all hover:bg-card/80 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
             >
-              <User className="h-5 w-5" />
-              View Resume
+              <Play className="h-5 w-5 fill-current" />
+              Watch Late Night
             </a>
           </div>
         </Reveal>
