@@ -559,6 +559,17 @@ function Work() {
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                     {project.description}
                   </p>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
+                    >
+                      <Play className="h-3.5 w-3.5 fill-current" />
+                      Watch on YouTube
+                    </a>
+                  )}
                 </div>
               </article>
             </Reveal>
