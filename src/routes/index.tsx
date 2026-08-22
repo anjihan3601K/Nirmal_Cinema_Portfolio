@@ -387,18 +387,22 @@ function Hero() {
           </Reveal>
         </div>
 
-        <Reveal delay={2} className="mt-12 lg:mt-0">
-          <div className="relative">
-            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/25 via-primary/10 to-transparent blur-3xl" />
-            <div className="relative aspect-[3/4] w-72 overflow-hidden rounded-2xl border-2 border-primary/20 bg-card shadow-2xl shadow-primary/20 sm:w-80 lg:w-96">
+        <Reveal delay={2} variant="zoom" className="mt-12 lg:mt-0">
+          <div
+            className="relative"
+            style={{ transform: `translate3d(0, ${offset * 0.18}px, 0)` }}
+          >
+            <div className="ambient-drift absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/25 via-primary/10 to-transparent blur-3xl" />
+            <div className="group relative aspect-[3/4] w-72 overflow-hidden rounded-2xl border-2 border-primary/20 bg-card shadow-2xl shadow-primary/20 sm:w-80 lg:w-96">
               <img
-                src={nirmalPortrait.url}
-                alt="Nirmal Sai Pothini"
-                className="h-full w-full object-cover object-top"
-                width={400}
-                height={533}
+                src={nirmalAvatar.url}
+                alt="Illustrated cinematic avatar of Nirmal Sai Pothini"
+                className="h-full w-full object-cover object-top transition-transform duration-[1200ms] group-hover:scale-105"
+                width={450}
+                height={600}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
+              <div className="film-grain absolute inset-0" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
             </div>
           </div>
         </Reveal>
