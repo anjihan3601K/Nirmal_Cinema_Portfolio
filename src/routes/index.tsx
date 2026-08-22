@@ -11,7 +11,7 @@ import {
   Sparkles,
   Star,
   Theater,
-  User,
+  
 } from "lucide-react";
 
 import heroPortrait from "../assets/hero-portrait.jpg";
