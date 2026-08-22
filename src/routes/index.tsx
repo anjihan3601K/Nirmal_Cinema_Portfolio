@@ -19,7 +19,7 @@ import lateNightImg from "../assets/project-late-night.jpg";
 import fatherSonImg from "../assets/project-father-son.jpg";
 import loveStoryImg from "../assets/project-love-story.jpg";
 import studentLifeImg from "../assets/project-student-life.jpg";
-import nirmalPortrait from "../assets/nirmal-portrait.png.asset.json";
+import nirmalAvatar from "../assets/nirmal-avatar.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
