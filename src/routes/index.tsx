@@ -4,6 +4,7 @@ import {
   Clapperboard,
   Film,
   Mail,
+  Phone,
   PenTool,
   Play,
   Quote,
