@@ -470,52 +470,66 @@ function Work() {
               className="masonry-item"
             >
               <article className="group relative overflow-hidden rounded-2xl border border-border bg-card hover-lift">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    width={1280}
-                    height={900}
-                    loading="lazy"
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t ${project.accent} opacity-60`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
-                  {project.featured && (
-                    <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
-                      <Star className="h-3 w-3 fill-current" />
-                      Featured
+                <Link
+                  to="/story/$storyId"
+                  params={{ storyId: project.id }}
+                  className="block"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      width={1280}
+                      height={900}
+                      loading="lazy"
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-t ${project.accent} opacity-60`}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+                    {project.featured && (
+                      <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
+                        <Star className="h-3 w-3 fill-current" />
+                        Featured
+                      </div>
+                    )}
+                    <div className="absolute inset-0 flex items-center justify-center bg-background/60 opacity-0 backdrop-blur-[2px] transition-opacity duration-500 group-hover:opacity-100">
+                      <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-background/70 px-5 py-2 text-sm font-medium uppercase tracking-widest text-primary">
+                        <ScrollText className="h-4 w-4" />
+                        Read the story
+                      </span>
                     </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-primary">
-                    <Film className="h-3.5 w-3.5" />
-                    {project.category}
                   </div>
-                  <h3 className="mt-2 font-serif text-2xl font-bold text-foreground">
-                    {project.title}
-                  </h3>
-                  <p className="mt-1 text-sm font-medium text-muted-foreground">
-                    Role: {project.role}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {project.description}
-                  </p>
-                  {project.link && (
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-primary">
+                      <Film className="h-3.5 w-3.5" />
+                      {project.category}
+                    </div>
+                    <h3 className="mt-2 font-serif text-2xl font-bold text-foreground">
+                      {project.title}
+                    </h3>
+                    <p className="mt-1 text-sm font-medium text-muted-foreground">
+                      Role: {project.role}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {project.description}
+                    </p>
+                  </div>
+                </Link>
+                {project.link && (
+                  <div className="px-6 pb-6">
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
+                      className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
                     >
                       <Play className="h-3.5 w-3.5 fill-current" />
                       Watch on YouTube
                     </a>
-                  )}
-                </div>
+                  </div>
+                )}
               </article>
             </Reveal>
           ))}
