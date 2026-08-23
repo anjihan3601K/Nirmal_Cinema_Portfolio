@@ -612,6 +612,14 @@ function Contact() {
               nirmalsaipothini@gmail.com
             </a>
             <a
+              href="tel:+919014702024"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-8 py-4 text-base font-medium text-foreground transition-all hover:bg-card/80 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
+            >
+              <Phone className="h-5 w-5" />
+              +91 90147 02024
+            </a>
+
+            <a
               href={LATE_NIGHT_URL}
               target="_blank"
               rel="noreferrer"
