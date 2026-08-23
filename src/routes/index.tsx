@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 import heroPortrait from "../assets/hero-portrait.jpg";
-import nirmalAvatar from "../assets/nirmal-avatar.png.asset.json";
+import nirmalAvatar from "../assets/nirmal-beige.png.asset.json";
 import { projects, LATE_NIGHT_URL } from "../lib/projects";
 
 export const Route = createFileRoute("/")({
