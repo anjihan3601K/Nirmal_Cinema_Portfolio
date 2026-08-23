@@ -4,6 +4,7 @@ import {
   Clapperboard,
   Film,
   Mail,
+  Phone,
   PenTool,
   Play,
   Quote,
@@ -15,7 +16,7 @@ import {
 } from "lucide-react";
 
 import heroPortrait from "../assets/hero-portrait.jpg";
-import nirmalAvatar from "../assets/nirmal-avatar.png.asset.json";
+import nirmalAvatar from "../assets/nirmal-beige.png.asset.json";
 import { projects, LATE_NIGHT_URL } from "../lib/projects";
 
 export const Route = createFileRoute("/")({
@@ -610,6 +611,14 @@ function Contact() {
               <Mail className="h-5 w-5" />
               nirmalsaipothini@gmail.com
             </a>
+            <a
+              href="tel:+919014702024"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-8 py-4 text-base font-medium text-foreground transition-all hover:bg-card/80 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
+            >
+              <Phone className="h-5 w-5" />
+              +91 90147 02024
+            </a>
+
             <a
               href={LATE_NIGHT_URL}
               target="_blank"

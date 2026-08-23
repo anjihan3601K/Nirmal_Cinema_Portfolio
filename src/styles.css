@@ -63,43 +63,44 @@
 
 :root {
   --radius: 0.625rem;
-  /* Midnight Indigo — light mode uses an airy indigo-tinted white */
-  --background: oklch(0.97 0.01 270);
-  --foreground: oklch(0.15 0.04 270);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.04 270);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.04 270);
-  --primary: oklch(0.52 0.24 270);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.92 0.02 270);
-  --secondary-foreground: oklch(0.22 0.07 270);
-  --muted: oklch(0.92 0.02 270);
-  --muted-foreground: oklch(0.5 0.08 270);
-  --accent: oklch(0.28 0.14 270);
-  --accent-foreground: oklch(1 0 0);
+  /* Beige & White — warm sand editorial */
+  --background: oklch(0.975 0.008 85);
+  --foreground: oklch(0.24 0.02 60);
+  --card: oklch(0.995 0.004 85);
+  --card-foreground: oklch(0.24 0.02 60);
+  --popover: oklch(0.995 0.004 85);
+  --popover-foreground: oklch(0.24 0.02 60);
+  --primary: oklch(0.52 0.06 65);
+  --primary-foreground: oklch(0.99 0.005 85);
+  --secondary: oklch(0.93 0.018 82);
+  --secondary-foreground: oklch(0.3 0.03 62);
+  --muted: oklch(0.93 0.018 82);
+  --muted-foreground: oklch(0.52 0.02 65);
+  --accent: oklch(0.82 0.05 78);
+  --accent-foreground: oklch(0.25 0.03 60);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.75 0.04 270 / 25%);
-  --input: oklch(0.75 0.04 270 / 25%);
-  --ring: oklch(0.52 0.24 270);
-  --chart-1: oklch(0.52 0.24 270);
-  --chart-2: oklch(0.7 0.18 270);
-  --chart-3: oklch(0.35 0.12 270);
-  --chart-4: oklch(0.65 0.2 270);
-  --chart-5: oklch(0.45 0.16 270);
-  --sidebar: oklch(0.95 0.015 270);
-  --sidebar-foreground: oklch(0.15 0.04 270);
-  --sidebar-primary: oklch(0.52 0.24 270);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.92 0.02 270);
-  --sidebar-accent-foreground: oklch(0.22 0.07 270);
-  --sidebar-border: oklch(0.75 0.04 270 / 25%);
-  --sidebar-ring: oklch(0.52 0.24 270);
+  --destructive-foreground: oklch(0.99 0.005 85);
+  --border: oklch(0.62 0.03 75 / 22%);
+  --input: oklch(0.62 0.03 75 / 22%);
+  --ring: oklch(0.52 0.06 65);
+  --chart-1: oklch(0.52 0.06 65);
+  --chart-2: oklch(0.7 0.06 75);
+  --chart-3: oklch(0.4 0.04 60);
+  --chart-4: oklch(0.82 0.05 78);
+  --chart-5: oklch(0.62 0.05 70);
+  --sidebar: oklch(0.95 0.014 85);
+  --sidebar-foreground: oklch(0.24 0.02 60);
+  --sidebar-primary: oklch(0.52 0.06 65);
+  --sidebar-primary-foreground: oklch(0.99 0.005 85);
+  --sidebar-accent: oklch(0.93 0.018 82);
+  --sidebar-accent-foreground: oklch(0.3 0.03 62);
+  --sidebar-border: oklch(0.62 0.03 75 / 22%);
+  --sidebar-ring: oklch(0.52 0.06 65);
   /* Cinematic tokens */
-  --glow: oklch(0.52 0.24 270 / 0.35);
-  --spotlight: oklch(0.52 0.24 270 / 0.08);
+  --glow: oklch(0.62 0.05 70 / 0.3);
+  --spotlight: oklch(0.72 0.06 75 / 0.16);
 }
+
 
 .dark {
   /* Midnight Indigo — dark mode is the primary cinematic experience */
