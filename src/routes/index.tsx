@@ -45,58 +45,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const LATE_NIGHT_URL = "https://www.youtube.com/watch?v=Rg-5pQS_0Ks";
-
-const projects = [
-  {
-    id: "late-night",
-    title: "Late Night",
-    role: "Actor",
-    category: "Short Film",
-    description:
-      "A heartfelt student love story that lingers in the quiet hours between midnight conversations and unspoken feelings.",
-    image: lateNightImg,
-    accent: "from-primary/20 to-transparent",
-    featured: true,
-    link: LATE_NIGHT_URL,
-  },
-  {
-    id: "father-son",
-    title: "Untitled — Father & Son Revenge",
-    role: "Story Writer",
-    category: "Feature Concept",
-    description:
-      "An epic revenge saga woven through ancient combat arts, bloodline honor, and the cost of vengeance across generations.",
-    image: fatherSonImg,
-    accent: "from-accent/20 to-transparent",
-    featured: false,
-    link: null,
-  },
-  {
-    id: "love-story",
-    title: "Untitled Love Story",
-    role: "Story Writer",
-    category: "Feature Concept",
-    description:
-      "A tender narrative exploring love, longing, and the moments that define us before we even realize it.",
-    image: loveStoryImg,
-    accent: "from-primary/20 to-transparent",
-    featured: false,
-    link: null,
-  },
-  {
-    id: "student-life",
-    title: "Untitled — A Student's Life",
-    role: "Story Writer",
-    category: "Social Drama",
-    description:
-      "The journey of a gifted student from a poor family whose dreams collide with society's indifference and the ego of power.",
-    image: studentLifeImg,
-    accent: "from-accent/20 to-transparent",
-    featured: false,
-    link: null,
-  },
-];
 
 const skills = [
   {
