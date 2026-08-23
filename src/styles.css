@@ -444,9 +444,17 @@
       transition: none !important;
     }
 
+    .story-in {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+
     .flicker,
     .reel-spin,
-    .ambient-drift {
+    .ambient-drift,
+    .story-in,
+    .story-hero-zoom {
       animation: none !important;
     }
   }
