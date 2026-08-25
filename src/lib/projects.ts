@@ -72,28 +72,28 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "love-story",
-    title: "Untitled Love Story",
+    id: "untitled-crime",
+    title: "Untitled — Crime Story",
     role: "Story Writer",
-    category: "Feature Concept",
+    category: "Crime Thriller · Feature Concept",
     description:
-      "A tender narrative exploring love, longing, and the moments that define us before we even realize it.",
+      "A tense crime thriller about a man who commits one small crime to survive — and spends the rest of his life paying for it.",
     image: loveStoryImg,
     accent: "from-primary/20 to-transparent",
     featured: false,
     link: null,
     logline:
-      "They meet at the wrong time, in the right city, and spend a decade almost getting it right.",
+      "One small crime to stay alive. One witness who never forgets a face.",
     synopsis: [
-      "She is leaving the city the week they meet. He is arriving. The story unfolds in five encounters spread across ten years — a train platform, a wedding, a hospital corridor, a rainy terrace, a quiet airport gate.",
-      "Between the meetings, life happens off-screen: other people, other cities, small betrayals of the heart. Each time they return to each other slightly changed, carrying the version of themselves the other never met.",
-      "It is not a story about destiny. It is about timing, and the strange grace of being remembered by someone who once knew you completely.",
+      "He never meant to cross the line. A desperate night, an unlocked door, and something taken that was never his — the kind of mistake a poor man makes once and regrets forever.",
+      "Years later, he has built a quiet, respectable life on the wreckage of that night. Then a stranger walks into his workplace and smiles at him the way only someone who knows your secret can.",
+      "The film traces the slow undoing of a man who thought he had outrun himself — and asks whether a single act can ever truly stay buried, or whether crime is just a debt that compounds in silence.",
     ],
     details: [
       { label: "Format", value: "Feature Concept" },
-      { label: "Genre", value: "Romance · Drama" },
+      { label: "Genre", value: "Crime Thriller" },
       { label: "Nirmal's Role", value: "Story & Screenplay" },
-      { label: "Status", value: "Written" },
+      { label: "Status", value: "In Development" },
     ],
   },
   {
