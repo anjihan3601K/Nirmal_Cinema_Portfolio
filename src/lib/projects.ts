@@ -3,7 +3,7 @@ import fatherSonImg from "../assets/project-father-son.jpg";
 import loveStoryImg from "../assets/project-love-story.jpg";
 import studentLifeImg from "../assets/project-student-life.jpg";
 
-export const LATE_NIGHT_URL = "https://www.youtube.com/watch?v=Rg-5pQS_0Ks";
+export const LATE_NIGHT_URL = "https://youtu.be/RO6lFwY78tQ?si=kUsXGo1Ay_fwOxal";
 
 export type Project = {
   id: string;
@@ -25,15 +25,15 @@ export const projects: Project[] = [
     id: "late-night",
     title: "Late Night",
     role: "Actor",
-    category: "Short Film",
+    category: "Suspense Thriller · Short Film",
     description:
-      "A heartfelt student love story that lingers in the quiet hours between midnight conversations and unspoken feelings.",
+      "A suspense thriller set on a deserted campus night, where a single wrong turn pulls two students into something they cannot walk back from.",
     image: lateNightImg,
     accent: "from-primary/20 to-transparent",
     featured: true,
     link: LATE_NIGHT_URL,
     logline:
-      "Two students, one sleepless campus night, and everything they never said out loud.",
+      "One sleepless campus night, one thing they were never meant to see.",
     synopsis: [
       "It begins the way most things do — with a message sent too late and answered too quickly. Arjun and Meghana are classmates who have spent a whole semester circling each other, hiding behind group chats, borrowed notes and casual excuses to walk the same corridor.",
       "One night the campus empties out. What starts as a walk to the tea stall stretches into hours: confessions traded like secrets, old wounds surfacing, laughter that turns quiet. The city sleeps around them while they finally speak in full sentences.",
@@ -41,18 +41,18 @@ export const projects: Project[] = [
     ],
     details: [
       { label: "Format", value: "Short Film" },
-      { label: "Genre", value: "Romance · Coming of Age" },
+      { label: "Genre", value: "Suspense Thriller" },
       { label: "Nirmal's Role", value: "Lead Actor" },
       { label: "Status", value: "Released" },
     ],
   },
   {
     id: "father-son",
-    title: "Untitled — Father & Son Revenge",
+    title: "Father–Son Bond",
     role: "Story Writer",
     category: "Feature Concept",
     description:
-      "An epic revenge saga woven through ancient combat arts, bloodline honor, and the cost of vengeance across generations.",
+      "A revenge saga rooted in bloodline honour and ancient combat discipline — based on Jeet Kune Do (optional).",
     image: fatherSonImg,
     accent: "from-accent/20 to-transparent",
     featured: false,
@@ -66,7 +66,7 @@ export const projects: Project[] = [
     ],
     details: [
       { label: "Format", value: "Feature Concept" },
-      { label: "Genre", value: "Action · Period Drama" },
+      { label: "Genre", value: "Action · Martial Arts (Jeet Kune Do)" },
       { label: "Nirmal's Role", value: "Story & Screenplay" },
       { label: "Status", value: "In Development" },
     ],
