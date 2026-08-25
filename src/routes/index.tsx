@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   Clapperboard,
@@ -15,8 +15,8 @@ import {
   
 } from "lucide-react";
 
-import heroPortrait from "../assets/hero-portrait.jpg";
-import nirmalAvatar from "../assets/nirmal-beige.png.asset.json";
+import nirmalCover from "../assets/nirmal-cover.jpg.asset.json";
+import nirmalCutout from "../assets/nirmal-cutout.png.asset.json";
 import { projects, LATE_NIGHT_URL } from "../lib/projects";
 
 export const Route = createFileRoute("/")({
@@ -338,17 +338,16 @@ function Hero() {
             className="relative"
             style={{ transform: `translate3d(0, ${offset * 0.18}px, 0)` }}
           >
-            <div className="ambient-drift absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/25 via-primary/10 to-transparent blur-3xl" />
-            <div className="group relative aspect-[3/4] w-72 overflow-hidden rounded-2xl border-2 border-primary/20 bg-card shadow-2xl shadow-primary/20 sm:w-80 lg:w-96">
+            <div className="ambient-drift absolute -inset-10 rounded-full bg-gradient-to-br from-primary/35 via-accent/20 to-transparent blur-3xl" />
+            <div className="absolute bottom-6 left-1/2 h-40 w-[80%] -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
+            <div className="group relative w-72 sm:w-80 lg:w-96">
               <img
-                src={nirmalAvatar.url}
-                alt="Illustrated cinematic avatar of Nirmal Sai Pothini"
-                className="h-full w-full object-cover object-top transition-transform duration-[1200ms] group-hover:scale-105"
-                width={450}
-                height={600}
+                src={nirmalCutout.url}
+                alt="Nirmal Sai Pothini"
+                className="relative z-10 w-full drop-shadow-[0_25px_45px_rgba(0,0,0,0.35)] transition-transform duration-[1200ms] group-hover:scale-[1.03]"
+                width={565}
+                height={939}
               />
-              <div className="film-grain absolute inset-0" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
             </div>
           </div>
         </Reveal>
@@ -373,8 +372,8 @@ function About() {
               <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-accent/10 to-primary/5 blur-3xl" />
               <div className="relative overflow-hidden rounded-2xl border border-border">
                 <img
-                  src={heroPortrait}
-                  alt="Cinematic portrait"
+                  src={nirmalCover.url}
+                  alt="Cinematic portrait of Nirmal Sai Pothini"
                   className="w-full object-cover"
                   width={1280}
                   height={1600}
@@ -406,9 +405,9 @@ function About() {
               <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
                 Nirmal Sai Pothini is an emerging actor, director, and writer
                 with a deep love for cinema that moves people. Whether it is the
-                quiet ache of a student romance in{" "}
+                taut suspense of{" "}
                 <span className="text-foreground">Late Night</span>, the
-                thunder of a father-son revenge epic, or the unflinching gaze of
+                thunder of a father–son martial-arts revenge epic, or the unflinching gaze of
                 a social drama — his work chases truth over spectacle.
               </p>
             </Reveal>
@@ -471,11 +470,7 @@ function Work() {
               className="masonry-item"
             >
               <article className="group relative overflow-hidden rounded-2xl border border-border bg-card hover-lift">
-                <Link
-                  to="/story/$storyId"
-                  params={{ storyId: project.id }}
-                  className="block"
-                >
+                <div className="block">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <img
                       src={project.image}
@@ -495,12 +490,6 @@ function Work() {
                         Featured
                       </div>
                     )}
-                    <div className="absolute inset-0 flex items-center justify-center bg-background/60 opacity-0 backdrop-blur-[2px] transition-opacity duration-500 group-hover:opacity-100">
-                      <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-background/70 px-5 py-2 text-sm font-medium uppercase tracking-widest text-primary">
-                        <ScrollText className="h-4 w-4" />
-                        Read the story
-                      </span>
-                    </div>
                   </div>
                   <div className="p-6">
                     <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-primary">
@@ -517,7 +506,7 @@ function Work() {
                       {project.description}
                     </p>
                   </div>
-                </Link>
+                </div>
                 {project.link && (
                   <div className="px-6 pb-6">
                     <a
@@ -605,11 +594,11 @@ function Contact() {
         <Reveal delay={3}>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="mailto:nirmalsaipothini@gmail.com"
+              href="mailto:pothinisai@gmail.com"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25"
             >
               <Mail className="h-5 w-5" />
-              nirmalsaipothini@gmail.com
+              pothinisai@gmail.com
             </a>
             <a
               href="tel:+919014702024"
@@ -619,21 +608,11 @@ function Contact() {
               +91 90147 02024
             </a>
 
-            <a
-              href={LATE_NIGHT_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-8 py-4 text-base font-medium text-foreground transition-all hover:bg-card/80 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
-            >
-              <Play className="h-5 w-5 fill-current" />
-              Watch Late Night
-            </a>
           </div>
         </Reveal>
         <Reveal delay={4}>
           <div className="mt-10 flex justify-center gap-6 text-muted-foreground">
             {[
-              { label: "Instagram", href: "#" },
               { label: "IMDb", href: "#" },
               { label: "YouTube", href: LATE_NIGHT_URL },
             ].map((social) => (
