@@ -607,10 +607,13 @@ function Contact() {
               <Phone className="h-5 w-5" />
               +91 90147 02024
             </a>
-
           </div>
         </Reveal>
+        <Reveal delay={4}>
+          <ContactForm />
+        </Reveal>
       </div>
+
     </section>
   );
 }
