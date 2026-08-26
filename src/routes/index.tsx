@@ -18,6 +18,7 @@ import {
 import nirmalCover from "../assets/nirmal-cover.jpg.asset.json";
 import nirmalCutout from "../assets/nirmal-cutout.png.asset.json";
 import { projects, LATE_NIGHT_URL } from "../lib/projects";
+import { ContactForm } from "@/components/ContactForm";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -607,10 +608,13 @@ function Contact() {
               <Phone className="h-5 w-5" />
               +91 90147 02024
             </a>
-
           </div>
         </Reveal>
+        <Reveal delay={4}>
+          <ContactForm />
+        </Reveal>
       </div>
+
     </section>
   );
 }
