@@ -18,6 +18,7 @@ import {
 import nirmalCover from "../assets/nirmal-cover.jpg.asset.json";
 import nirmalCutout from "../assets/nirmal-cutout.png.asset.json";
 import { projects, LATE_NIGHT_URL } from "../lib/projects";
+import { ContactForm } from "@/components/ContactForm";
 
 export const Route = createFileRoute("/")({
   head: () => ({
